@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Artistique</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <span class="logo-text">A2N</span>
+            </div>
+            <ul>
+                <li><a href="#accueil" class="nav-link">Accueil</a></li>
+                <li><a href="#galerie" class="nav-link">Œuvres</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="accueil" class="hero">
+        <div class="hero-content">
+            <h1>Art & Création</h1>
+            <p class="subtitle">PHOTOGRAPHIE • DESSIN • IMAGINATION</p>
+        </div>
+    </section>
+
+    <section id="galerie" class="gallery">
+        <h2 class="section-title">Mes Œuvres</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <div class="item-inner">
+                    <img src="https://mtek3d.com/wp-content/uploads/2018/01/image-placeholder-500x500.jpg" alt="Art 1">
+                    <div class="item-overlay">
+                        <h3>Rêverie</h3>
+                        <p>Photographie</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="item-inner">
+                    <img src="https://mtek3d.com/wp-content/uploads/2018/01/image-placeholder-500x500.jpg" alt="Design 1">
+                    <div class="item-overlay">
+                        <h3>L’évasion monochrome</h3>
+                        <p>Photographie</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="item-inner">
+                    <img src="https://mtek3d.com/wp-content/uploads/2018/01/image-placeholder-500x500.jpg" alt="Art 2">
+                    <div class="item-overlay">
+                        <h3>Reflet sauvage
+
+                        </h3>
+                        <p>Photographie</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="item-inner">
+                    <img src="https://mtek3d.com/wp-content/uploads/2018/01/image-placeholder-500x500.jpg" alt="Photo 2">
+                    <div class="item-overlay">
+                        <h3>Esprit nordique</h3>
+                        <p>Photographie</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="item-inner">
+                    <img src="https://mtek3d.com/wp-content/uploads/2018/01/image-placeholder-500x500.jpg" alt="Design 2">
+                    <div class="item-overlay">
+                        <h3>Rêverie éphémère</h3>
+                        <p>Photographie</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="item-inner">
+                    <img src="https://mtek3d.com/wp-content/uploads/2018/01/image-placeholder-500x500.jpg" alt="Art 3">
+                    <div class="item-overlay">
+                        <h3>Douceur florale
+
+
+
+
+
+                        </h3>
+                        <p>Photographie</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <p>contact@byweb.fr</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-phone"></i>
+                        <p>+33 6 00 00 00 00</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Paris, France</p>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/julesbrd_/" class="social-link"><i class="fab fa-instagram"></i></a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 A2N. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        const header = document.querySelector('header');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.gallery-item').forEach((el) => observer.observe(el));
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
